@@ -27,6 +27,7 @@ class _CustomCameraPositionState extends State<CustomCameraPosition> {
          GoogleMap(
         onMapCreated: (controller) {
           mapController = controller;
+          initialMapStyles();
         },
         
         initialCameraPosition: initialCameraPosition,),
@@ -51,5 +52,11 @@ class _CustomCameraPositionState extends State<CustomCameraPosition> {
         ),
       ]
     );
+  }
+  
+  void initialMapStyles() async{
+    var merave = await DefaultAssetBundle.of(context).loadString('assets/map_styles/merve_styles.json');
+    mapController.setMapStyle(merave);
+
   }
 }
